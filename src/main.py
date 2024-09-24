@@ -1,17 +1,18 @@
 import gradio as gr
-from .dao import MockedHeritageDontDAO
-from .logic import LLMClient
+from dao import MockedHeritageDontDAO, LODDAO
+from logic import LLMClient
 
 llmClient = LLMClient()
-dao = MockedHeritageDontDAO()
+dao = LODDAO()
 
-def yes_man(message, history):
-    donts = dao.get("")
-    preprocessed = llmClient.preprocess_input(message, history, donts)
+def handle_chat(message, history):
+    rules = dao.get()
+    print(rules)
+    preprocessed = llmClient.preprocess_input(message, history, rules)
     return llmClient.chat(preprocessed)
 
 gr.ChatInterface(
-    yes_man,
+    handle_chat,
     chatbot=gr.Chatbot(height=300),
     textbox=gr.Textbox(placeholder="Hi! how can I help you?", container=False, scale=7),
     title="Heritage AI",

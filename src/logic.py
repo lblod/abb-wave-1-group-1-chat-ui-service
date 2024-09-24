@@ -10,17 +10,15 @@ class LLMClient:
         print(api)
         self.model = model
         
-    def preprocess_input(self, message:str, history:str, donts:str):
+    def preprocess_input(self, message:str, history:str, donts:list[dict[str, str]]):
         messages = [{
             'role': 'system',
             'content': '''You are a helpfull assitant that works for the Flemish government.
             You will answer questions about heritage objects.
             
-            The list of don'ts for the heritage object in this chat is:
-            {donts}
-            
+            If a question is asked about the don'ts, always cite the relevant resource(s) if there are any!
             Answer always in Dutch.
-            '''.format(donts=donts)
+            '''
         }]
         
         for old_turn in history:
@@ -34,14 +32,20 @@ class LLMClient:
             
         messages.append({
             'role': 'user',
-            'content': message
+            'content': f'''The following list might contain information that is usefull for the following question:
+                        {donts}
+                        
+                        {message}
+                        
+                        Be helpfull and polite but keep it short and simple.
+                        Only answer with information that is strictly relevant to this question'''
         })
         
         return messages
         
     def chat(self, messages:list[dict[str, str]]):
         print(messages)
-        response = self.llm.chat(model=self.model, messages=messages)
+        response = self.llm.chat(model=self.model, messages=messages, options={'temperature': 0.1})
         print(response)
         return response['message']['content']
 
