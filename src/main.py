@@ -1,6 +1,6 @@
 import gradio as gr
 
-from logic import LLMClient
+from .logic import LLMClient
 
 llmClient = LLMClient()
 
