@@ -1,11 +1,14 @@
 import gradio as gr
 
 from logic import LLMClient
+from dao import MockedHeritageDontDAO
 
 llmClient = LLMClient()
+dao = MockedHeritageDontDAO()
 
 def yes_man(message, history):
-    preprocessed = llmClient.preprocess_input(message, history)
+    donts = dao.get("")
+    preprocessed = llmClient.preprocess_input(message, history, donts)
     return llmClient.chat(preprocessed)
 
 gr.ChatInterface(

@@ -9,8 +9,18 @@ class LLMClient:
         self.llm = Client(host=api)
         self.model = model
         
-    def preprocess_input(self, message, history):
-        messages = []
+    def preprocess_input(self, message:str, history:str, donts:str):
+        messages = [{
+            'role': 'system',
+            'content': '''You are a helpfull assitant that works for the Flemish government.
+            You will answer questions about heritage objects.
+            
+            The list of don'ts for the heritage object in this chat is:
+            {donts}
+            
+            Answer always in Dutch.
+            '''.format(donts=donts)
+        }]
         
         for old_turn in history:
             old_turn = [old_turn] if isinstance(old_turn, str) else old_turn
@@ -32,3 +42,5 @@ class LLMClient:
         response = self.llm.chat(model=self.model, messages=messages)
         print(response)
         return response['message']['content']
+
+
