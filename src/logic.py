@@ -7,6 +7,7 @@ class LLMClient:
     #http://hackathon-ai-1.s.redhost.be/11434
     def __init__(self, api=os.environ.get('OLLAMA_HOST', 'http://hackathon-ai-1.s.redhost.be/11434'), model="llama3.1"):
         self.llm = Client(host=api)
+        print(api)
         self.model = model
         
     def preprocess_input(self, message:str, history:str, donts:str):
@@ -39,6 +40,7 @@ class LLMClient:
         return messages
         
     def chat(self, messages:list[dict[str, str]]):
+        print(messages)
         response = self.llm.chat(model=self.model, messages=messages)
         print(response)
         return response['message']['content']

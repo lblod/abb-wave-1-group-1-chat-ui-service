@@ -1,7 +1,6 @@
 import gradio as gr
-
-from logic import LLMClient
-from dao import MockedHeritageDontDAO
+from .dao import MockedHeritageDontDAO
+from .logic import LLMClient
 
 llmClient = LLMClient()
 dao = MockedHeritageDontDAO()

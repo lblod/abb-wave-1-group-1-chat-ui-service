@@ -16,3 +16,13 @@ class MockedHeritageDontDAO(DAO):
         - change the facade
         - change the gutter
     '''
+    
+
+'''
+select ?content
+where {
+    ?node oa:hasBody ?content .
+    ?node 
+}
+
+'''

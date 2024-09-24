@@ -18,5 +18,3 @@ If you take a look at our src.main file, you will find that running a chat intar
 # How do we integratez
 If we have time, we would like to integrate this fully (probably with an Iframe) in our main frontend.
 However the goal of this project is to create a simple interface that already works as intended to build further on.
-
-
