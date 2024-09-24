@@ -1,4 +1,4 @@
-# Chat UI
+# Chat UI - Group 1
 In order to speed up our development we decided that we would use a pre-build component for our visualization of our interactive chat.
 For this there are currently a few possible tools, of which we have chosen Gradio to bootsrap our LLM.
 
