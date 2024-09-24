@@ -1,4 +1,4 @@
-# Chat UI
+# Chat UI - Group 1
 In order to speed up our development we decided that we would use a pre-build component for our visualization of our interactive chat.
 For this there are currently a few possible tools, of which we have chosen Gradio to bootsrap our LLM.
 
@@ -15,7 +15,8 @@ If you take a look at our src.main file, you will find that running a chat intar
 'gr.ChatInterface().launch()'
 
 
-# How do we integrate
+# How do we integratez
 If we have time, we would like to integrate this fully (probably with an Iframe) in our main frontend.
 However the goal of this project is to create a simple interface that already works as intended to build further on.
+
 
