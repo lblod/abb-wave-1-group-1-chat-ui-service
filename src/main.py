@@ -1,15 +1,17 @@
 import gradio as gr
-from dao import MockedHeritageDontDAO, LODDAO
-from logic import LLMClient
+from .dao import MockedHeritageDontDAO, LODDAO
+from .logic import LLMClient
 
 llmClient = LLMClient()
 dao = LODDAO()
+
 
 def handle_chat(message, history):
     rules = dao.get()
     print(rules)
     preprocessed = llmClient.preprocess_input(message, history, rules)
     return llmClient.chat(preprocessed)
+
 
 gr.ChatInterface(
     handle_chat,
