@@ -1,7 +1,11 @@
+import logging
 import os
 from abc import ABC, abstractmethod
 
 import requests
+
+logger = logging.getLogger(__name__)
+
 
 
 class DAO(ABC):
@@ -31,7 +35,7 @@ class LODDAO(DAO):
         annotations = requests.get(
             f'{self.db_host}/annotations?filter[:exact:resource]=https://id.erfgoed.net/aanduidingsobjecten/{designation_id}').json()\
                 
-        print(annotations)
+        logger.info(annotations)
 
         annotations = annotations.get('data', [])
 
