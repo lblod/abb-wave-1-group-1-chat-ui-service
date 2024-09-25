@@ -1,6 +1,8 @@
-import requests
 import os
 from abc import ABC, abstractmethod
+
+import requests
+
 
 class DAO(ABC):
     
