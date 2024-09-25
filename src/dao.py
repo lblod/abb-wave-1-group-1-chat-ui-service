@@ -34,7 +34,7 @@ class LODDAO(DAO):
 
     def get(self, designation_id='14969'):
         annotations = requests.get(
-            f'{self.db_host}/annotations?filter[:exact:resource]=https://id.erfgoed.net/aanduidingsobjecten/{designation_id}').json()\
+            f'{self.db_host}/annotations?filter[:exact:resource]=https://id.erfgoed.net/aanduidingsobjecten/{designation_id}').json()
                 
         logger.info(annotations)
 
