@@ -24,6 +24,7 @@ def handle_chat(message, history, designation_id):
     preprocessed = llmClient.preprocess_input(message, history, rules)
     return llmClient.chat(preprocessed)
 
+
 gr.ChatInterface(
     handle_chat,
     chatbot=gr.Chatbot(height=300),
