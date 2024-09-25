@@ -1,7 +1,7 @@
 import gradio as gr
 
-from dao import LODDAO
-from logic import LLMClient
+from .dao import LODDAO
+from .logic import LLMClient
 
 llmClient = LLMClient()
 dao = LODDAO()
