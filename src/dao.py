@@ -5,6 +5,7 @@ from abc import ABC, abstractmethod
 import requests
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 
