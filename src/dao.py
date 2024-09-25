@@ -29,8 +29,11 @@ class LODDAO(DAO):
 
     def get(self, designation_id='14969'):
         annotations = requests.get(
-            f'{self.db_host}/annotations?filter[:exact:resource]=https://id.erfgoed.net/aanduidingsobjecten/{designation_id}').json()[
-            'data']
+            f'{self.db_host}/annotations?filter[:exact:resource]=https://id.erfgoed.net/aanduidingsobjecten/{designation_id}').json()\
+                
+        print(annotations)
+        
+        annotations = annotations['data']
 
         return [{'rule': annotation['attributes']['body'], 'resource': annotation['attributes']['resource']} for
                 annotation in annotations]

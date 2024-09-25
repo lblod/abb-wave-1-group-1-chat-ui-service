@@ -1,4 +1,5 @@
 import os
+
 from ollama import Client
 
 
@@ -6,7 +7,7 @@ class LLMClient:
     
     #http://hackathon-ai-1.s.redhost.be/11434
     def __init__(self, api=os.environ.get('OLLAMA_HOST', 'http://ollama:11434'), model="llama3.1"):
-        self.llm = Client(host=api)
+        self.llm = Client(host=api, auth=("ml2grow", "dikke_gpu_jongeuh"))
         self.model = model
         
     def preprocess_input(self, message:str, history:str, donts:list[dict[str, str]]):
